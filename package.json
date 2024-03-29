@@ -1,0 +1,23 @@
+{
+    "name": "@scottish-government-design-system/content-blocks",
+    "description": "Construct page layouts with content blocks that extend the Scottish Government Design System",
+    "version": "0.1.0",
+    "author": {
+      "name": "Scottish Government Digital Design system team",
+      "email": "designsystem@gov.scot",
+      "url": "https://github.com/scottish-government-design-system/design-system"
+    },
+    "license": "MIT",
+    "scripts": {
+      "sass": "sass --style=expanded src/content-blocks.scss dist/css/content-blocks.css",
+      "sass-min": "sass --style=compressed src/content-blocks.scss dist/css/content-blocks.min.css"
+    },
+    "browserslist": [
+      "defaults"
+    ],
+    "devDependencies": {
+      "@scottish-government/design-system": "^1.4.0",
+      "sass": "^1.71.1"
+    }
+  }
+  
