@@ -22,17 +22,16 @@ We recommend importing the Sass for content blocks separately, along with the Sa
 
 #### Import Sass files
 
-To import the Sass into your project's Sass use:
+If you already are using the Scottish Government Design System in your project then you only need to import the additional Sass for content blocks. To import the content block Sass into your project's Sass use:
 
 ```
-@import "/path/to/node_modules/@scottish-government-design-system/content-blocks/src/all-content-blocks";
+@import "/path/to/node_modules/@scottish-government-design-system/content-blocks/src/content-blocks/all-content-blocks";
 ```
 **This must be imported after the Scottish Government Design System Sass.**
 
 #### Build production files
 
-These are the optimised CSS assets that can be included in your project.
-**This also includes the Scottish Government Design System CSS in the generated CSS file, so doesn't need included separately.**
+Alternatively you may wish to generate a single CSS file to include in your project. These optimised CSS assets can be included in your project and they include the Scottish Government Design System CSS in the generated CSS files. **You therefore don't need to include the design system separately in your project.**
 
 Run:
 
