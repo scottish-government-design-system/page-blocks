@@ -25,7 +25,7 @@ We recommend importing the Sass for content blocks separately, along with the Sa
 To import the Sass into your project's Sass use:
 
 ```
-@import "/path/to/node_modules/@scottish-government-design-system/src/content-blocks/all-content-blocks";
+@import "/path/to/node_modules/@scottish-government-design-system/content-blocks/src/all-content-blocks";
 ```
 **This must be imported after the Scottish Government Design System Sass.**
 

@@ -16,7 +16,7 @@
       "defaults"
     ],
     "devDependencies": {
-      "@scottish-government/design-system": "^2.0.0",
+      "@scottish-government/design-system": "^2.1.0",
       "sass": "^1.71.1"
     }
   }
