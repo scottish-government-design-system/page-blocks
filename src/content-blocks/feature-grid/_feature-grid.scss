@@ -89,6 +89,7 @@
     &__item {
         @include ds_responsive-padding(4, top);
         margin: 0;
+        position: relative;
         
         &-media {
             @include ds_media-query (medium-down) {

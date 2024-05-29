@@ -6,6 +6,13 @@ Changes are grouped under the labels: `Added`, `Changed`, `Deprecated`,
 `Removed`, `Fixed`, and `Security`.
 
 ---
+## v0.1.2
+### Added
+- Relative positioning to feature grid items to support absolute positioning of edit buttons in the Bloomreach CMS
+
+## v0.1.1
+### Fixed
+- Incorrect path in documentation
 
 ## v0.1.0
 ### Added
