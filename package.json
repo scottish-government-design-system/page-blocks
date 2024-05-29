@@ -1,7 +1,7 @@
 {
     "name": "@scottish-government-design-system/content-blocks",
     "description": "Construct page layouts with content blocks that extend the Scottish Government Design System",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "author": {
         "name": "Scottish Government Digital Design system team",
         "email": "designsystem@gov.scot",
