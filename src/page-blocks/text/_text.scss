@@ -1,0 +1,10 @@
+/*------------------------------------*\
+    TEXT
+\*------------------------------------*/
+
+.ds_pb--text {
+    .ds_pb__inner {
+        @include ds_responsive-padding(4, top);
+        @include ds_responsive-padding(4, bottom);
+    }
+}

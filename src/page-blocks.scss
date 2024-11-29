@@ -1,0 +1,7 @@
+// This file is used to compile CSS that includes the Scottish Government Design System
+// It is recommended, if possible, that you include @scottish-government/design-system separately in your project dependencies
+
+// Import design system
+@import "../node_modules/@scottish-government/design-system/src/design-system.scss";
+// Import page blocks
+@import "page-blocks/all-page-blocks";
