@@ -1,0 +1,24 @@
+/*------------------------------------*\
+    LINK LIST
+    Support for between 1 and 9 items
+\*------------------------------------*/
+
+.ds_pb--link-list {
+
+    @include ds_responsive-padding(4, top);
+    @include ds_responsive-padding(4, bottom);
+
+    .ds_pb__inner {
+        grid-template-columns: 1fr;
+    }
+
+    // Add extra space if following content
+    * + .ds_link-list {
+        @include ds_responsive-margin(3, top);
+    }
+
+    // Darker border to support background theming - may be updated in future DS version
+    .ds_link-item {
+        border-bottom: 1px $ds_colour__border solid;
+    }
+}

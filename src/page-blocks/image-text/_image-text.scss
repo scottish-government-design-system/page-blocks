@@ -1,0 +1,14 @@
+/*------------------------------------*\
+    IMAGE TEXT
+\*------------------------------------*/
+
+.ds_pb--image-text {
+    @extend %ds_pb--image-video;
+
+    &--center {
+        .ds_pb__poster,
+        .ds_pb__text {
+            align-self: center;
+        }  
+    }
+}

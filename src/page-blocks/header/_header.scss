@@ -1,0 +1,8 @@
+/*------------------------------------*\
+    HEADER
+\*------------------------------------*/
+
+.ds_pb--header {
+    @include ds_responsive-padding(4, top);
+    @include ds_responsive-padding(4, bottom);
+}
