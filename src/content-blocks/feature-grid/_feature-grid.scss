@@ -20,9 +20,9 @@
             @supports(display: grid) {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
-            
+
         }
-    
+
     }
 
     // 3 items
@@ -31,18 +31,18 @@
         .ds_cb__inner {
 
             @include ds_media-query(medium) {
-    
+
                 > * {
                     float: left;
                     @include ds_colwidth(4);
                 }
-    
+
                 @supports(display: grid) {
                     grid-template-columns: repeat(3, minmax(0, 1fr));
                 }
-                
+
             }
-        
+
         }
 
     }
@@ -53,7 +53,7 @@
         .ds_cb__inner {
 
             @include ds_media-query(medium) {
-    
+
                 > * {
                     float: left;
                     @include ds_colwidth(6);
@@ -62,35 +62,34 @@
                         clear: left;
                     }
                 }
-    
+
                 @supports(display: grid) {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
                 }
-                
+
             }
 
             @include ds_media-query(large) {
-    
+
                 > * {
                     float: left;
                     @include ds_colwidth(3);
                 }
-    
+
                 @supports(display: grid) {
                     grid-template-columns: repeat(4, minmax(0, 1fr));
                 }
-                
-            }
-        
-        }
 
+            }
+
+        }
     }
 
     &__item {
         @include ds_responsive-padding(4, top);
         margin: 0;
         position: relative;
-        
+
         &-media {
             @include ds_media-query (medium-down) {
                 &--small-mobile {
@@ -98,13 +97,17 @@
                 }
             }
         }
-        
+
         &-title {
             margin: 0;
+
+            a {
+                display: inline-block;
+            }
         }
 
         &-media + &-title {
-            @include ds_responsive-margin(2, top, true);    
+            @include ds_responsive-margin(2, top, true);
         }
 
         &-summary {
@@ -114,13 +117,7 @@
 
         &-media + &-summary,
         &-title + &-summary {
-            @include ds_responsive-margin(1, top);  
+            @include ds_responsive-margin(1, top);
         }
-
     }
-
-
-
-    
-
 }

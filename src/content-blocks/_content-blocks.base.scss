@@ -24,7 +24,7 @@ $cb_colors: (
 %texttheme-reversed {
     color: white;
 
-    a:not(:hover):not(:focus):not(.ds_button) {
+    a:not(:focus):not(.ds_button) {
         color: currentColor;
         text-decoration: underline;
     }
