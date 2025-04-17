@@ -101,6 +101,10 @@
         
         &-title {
             margin: 0;
+
+            a {
+                display: inline-block;
+            }
         }
 
         &-media + &-title {
