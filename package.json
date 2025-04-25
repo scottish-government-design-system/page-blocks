@@ -1,7 +1,7 @@
 {
     "name": "@scottish-government-design-system/page-blocks",
     "description": "Construct page layouts with page blocks that extend the Scottish Government Design System",
-    "version": "0.1.2",
+    "version": "1.0.0",
     "author": {
         "name": "Scottish Government Digital Design system team",
         "email": "designsystem@gov.scot",
