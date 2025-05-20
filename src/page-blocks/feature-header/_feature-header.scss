@@ -55,6 +55,7 @@
             &:has(.ds_feature-header__secondary-overlay):focus,
             &:has(.ds_feature-header__secondary-overlay):hover {
                 box-shadow: none;
+                filter: none;
                 outline: 0;
             }
 
