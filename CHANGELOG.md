@@ -6,6 +6,10 @@ Changes are grouped under the labels: `Added`, `Changed`, `Deprecated`,
 `Removed`, `Fixed`, and `Security`.
 
 ---
+## v1.1.1
+### Added
+- Browse page block
+
 ## v1.0.1
 ### Fixed
 - Vertically centre option for media and text blocks only applied to fixed width sizes

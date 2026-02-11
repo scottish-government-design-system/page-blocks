@@ -1,0 +1,12 @@
+/*------------------------------------*\
+    BROWSE
+\*------------------------------------*/
+
+.ds_pb--browse {
+    @include ds_responsive-padding(4, top);
+    @include ds_responsive-padding(4, bottom);
+
+    .ds_pb__inner {
+        grid-template-columns: 1fr;
+    }
+}
