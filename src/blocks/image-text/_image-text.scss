@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    IMAGE TEXT
+\*------------------------------------*/
+
+@use "pkg:@scottish-government/design-system/src/base/helpers/" as ds_helpers;
+
+.ds_pb--image-text {
+    @include ds_helpers.ds_responsive-padding(4, top);
+    @include ds_helpers.ds_responsive-padding(4, bottom);
+
+    // All heading links are underlined as default in page blocks
+    h1,
+    h2,
+    h3,
+    h4 {
+        a:not(:hover):not(:focus) {
+            text-decoration: underline;
+        }
+    }
+
+    @include ds_helpers.ds_media-query(medium-down) {
+        .ds_pb__poster {
+            @include ds_helpers.ds_responsive-margin(4, top);
+            grid-area: 2/1/3/1;
+        }
+        .ds_pb__text {
+            grid-area: 1/1/2/1;
+            margin-top: 0;
+        }
+    }
+
+    @include ds_helpers.ds_media-query(medium) {
+        &--center {
+            .ds_pb__poster,
+            .ds_pb__text {
+                align-self: center;
+            }  
+        }
+    }
+}

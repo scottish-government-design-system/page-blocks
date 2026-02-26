@@ -1,0 +1,99 @@
+/*------------------------------------*\
+    FEATURE GRID
+    Support for 2 (default), 3 and 4 items
+\*------------------------------------*/
+
+@use "pkg:@scottish-government/design-system/src/base/helpers/" as ds_helpers;
+
+.ds_pb--feature-grid {
+
+    @include ds_helpers.ds_responsive-padding(4, bottom);
+
+    // All heading links are underlined as default in page blocks
+    h1,
+    h2,
+    h3,
+    h4 {
+        a:not(:hover):not(:focus) {
+            text-decoration: underline;
+        }
+    }
+
+    // 2 items
+    .ds_pb__inner {
+
+        @include ds_helpers.ds_media-query(medium) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+    }
+
+    // 3 items
+    &-3-items {
+
+        .ds_pb__inner {
+
+            @include ds_helpers.ds_media-query(medium) {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+        }
+
+    }
+
+    // 4 items
+    &-4-items {
+
+        .ds_pb__inner {
+
+            @include ds_helpers.ds_media-query(medium) {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            @include ds_helpers.ds_media-query(large) {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+        }
+    }
+
+    &__item {
+        @include ds_helpers.ds_responsive-padding(4, top);
+        margin: 0;
+        position: relative;
+
+        &-media {
+            @include ds_helpers.ds_media-query (medium-down) {
+                &--small-mobile {
+                    max-width: 24rem;
+                }
+            }
+
+            &-link {
+                display: block;
+            }
+        }
+
+        &-title {
+            margin: 0;
+
+            a {
+                display: inline-block;
+            }
+        }
+
+        &-media + &-title {
+            @include ds_helpers.ds_responsive-margin(2, top, true);
+        }
+
+        &-summary {
+            margin: 0;
+            @include ds_helpers.ds_last-child-no-margin;
+        }
+
+        &-media + &-summary,
+        &-title + &-summary {
+            @include ds_helpers.ds_responsive-margin(1, top);
+        }
+    }
+}
