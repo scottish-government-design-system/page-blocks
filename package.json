@@ -18,7 +18,7 @@
         "defaults"
     ],
     "dependencies": {
-        "@scottish-government/design-system": "^4.0.0-beta.0"
+        "@scottish-government/design-system": "^4.0.0-beta.1"
     },
     "devDependencies": {
         "sass": "~1.94.3"
