@@ -20,29 +20,22 @@ To install your own local copy of the package follow these steps:
 
 We recommend importing the Sass for page blocks separately, along with the Sass from the Scottish Government Design System.
 
-#### Import Sass files
+#### Import Sass modules
 
-If you already are using the Scottish Government Design System in your project then you only need to import the additional Sass for page blocks. To import the page block Sass into your project's Sass use:
+If you already are using the Scottish Government Design System in your project then you only need to include the additional Sass for page blocks. To import the page block Sass into your project's Sass use:
 
 ```
-@import "/path/to/node_modules/@scottish-government-design-system/page-blocks/src/page-blocks/all-page-blocks";
+@use "/path/to/node_modules/@scottish-government-design-system/page-blocks/src/page-blocks";
 ```
-**This must be imported after the Scottish Government Design System Sass.**
 
 #### Build production files
 
-Alternatively you may wish to generate a single CSS file to include in your project. These optimised CSS assets can be included in your project and they include the Scottish Government Design System CSS in the generated CSS files. **You therefore don't need to include the design system separately in your project.**
+Alternatively you may wish to generate a separate CSS file to include in your project. 
 
 Run:
 
 ```
-npm run sass-min
+npm run build
 ```
 
-This will compile the various Sass files and update the contents of the `/dist` directory with the newly generated compressed CSS file.
-
-To create a non-compressed CSS file, run:
-
-```
-npm run sass
-```
+This will compile the various Sass files and update the contents of the `/dist` directory with the newly generated compressed and uncompressed CSS files.
