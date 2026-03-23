@@ -6,6 +6,11 @@ Changes are grouped under the labels: `Added`, `Changed`, `Deprecated`,
 `Removed`, `Fixed`, and `Security`.
 
 ---
+## v2.0.0
+### Changed
+- Sass changed to modular Sass
+- Browse and card page block headings no longer underlined when links
+
 ## v1.1.1
 ### Added
 - Browse page block

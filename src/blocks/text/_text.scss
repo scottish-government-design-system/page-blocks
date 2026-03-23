@@ -1,0 +1,23 @@
+/*------------------------------------*\
+    TEXT
+\*------------------------------------*/
+
+@use "pkg:@scottish-government/design-system/src/base/helpers/" as ds_helpers;
+
+.ds_pb--text {
+
+    // All heading links are underlined as default in page blocks
+    h1,
+    h2,
+    h3,
+    h4 {
+        a:not(:hover):not(:focus) {
+            text-decoration: underline;
+        }
+    }
+
+    .ds_pb__inner {
+        @include ds_helpers.ds_responsive-padding(4, top);
+        @include ds_helpers.ds_responsive-padding(4, bottom);
+    }
+}

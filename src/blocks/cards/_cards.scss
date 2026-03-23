@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    CARDS
+\*------------------------------------*/
+
+@use "pkg:@scottish-government/design-system/src/base/helpers/" as ds_helpers;
+
+.ds_pb--cards {
+    .ds_pb__inner {
+        @include ds_helpers.ds_responsive-padding(4, bottom);
+
+        > * {
+            @include ds_helpers.ds_responsive-margin(4, top);
+        }
+
+        @include ds_helpers.ds_media-query(medium) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+}

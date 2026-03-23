@@ -9,14 +9,18 @@
     },
     "license": "MIT",
     "scripts": {
-        "sass": "sass --style=expanded src/page-blocks.scss dist/css/page-blocks.css",
-        "sass-min": "sass --style=compressed src/page-blocks.scss dist/css/page-blocks.min.css"
+        "build": "rm -rf ./dist; npm run sass && npm run sass-min",
+        "prepack": "npm run build",
+        "sass": "sass --pkg-importer=node --style=expanded src/page-blocks.scss dist/css/page-blocks.css",
+        "sass-min": "sass --pkg-importer=node --style=compressed src/page-blocks.scss dist/css/page-blocks.min.css"
     },
     "browserslist": [
         "defaults"
     ],
+    "dependencies": {
+        "@scottish-government/design-system": "^4.0.0-beta.1"
+    },
     "devDependencies": {
-        "@scottish-government/design-system": "^3.0.1",
-        "sass": "^1.71.1"
+        "sass": "~1.94.3"
     }
 }
