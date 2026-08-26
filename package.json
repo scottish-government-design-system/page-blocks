@@ -7,6 +7,10 @@
         "email": "designsystem@gov.scot",
         "url": "https://github.com/scottish-government-design-system/design-system"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scottish-government-design-system/page-blocks"
+    },
     "license": "MIT",
     "scripts": {
         "build": "rm -rf ./dist; npm run sass && npm run sass-min",
@@ -18,7 +22,7 @@
         "defaults"
     ],
     "dependencies": {
-        "@scottish-government/design-system": "^4.0.0-beta.2"
+        "@scottish-government/design-system": "^4.2.0"
     },
     "devDependencies": {
         "sass": "~1.94.3"
