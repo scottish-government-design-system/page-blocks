@@ -1,4 +1,5 @@
 @use "pkg:@scottish-government/design-system/src/base/settings/" as ds_settings;
 
-// Default theme secondary background to standard secondary background - will be overwritten by theme Sass
+/// Default theme secondary background to standard secondary background - will be overwritten by theme Sass
+/// @type Color
 $pb_theme__background-secondary: ds_settings.$ds_colour__background--secondary !default;
