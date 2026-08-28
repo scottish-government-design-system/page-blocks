@@ -14,7 +14,7 @@
     "license": "MIT",
     "scripts": {
         "build": "rm -rf ./dist; npm run sass && npm run sass-min",
-        "prepack": "npm run build",
+        "prepare": "npm run build",
         "sass": "sass --pkg-importer=node --style=expanded src/page-blocks.scss dist/css/page-blocks.css",
         "sass-min": "sass --pkg-importer=node --style=compressed src/page-blocks.scss dist/css/page-blocks.min.css"
     },
