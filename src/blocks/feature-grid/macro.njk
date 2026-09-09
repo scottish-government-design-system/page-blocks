@@ -1,0 +1,136 @@
+{#
+    sgBlockFeatureGridItem
+
+    Renders a single feature grid item with optional image, heading, and content.
+    @param {Object} params - The options object for the feature grid item.
+    @param {string} [params.image] - Optional image path to be displayed in the feature grid item. This should be a valid image URL or path. If not provided, the image will not be displayed.
+    @param {string} [params.imageAlt] - Optional alt text for the image. If not provided, the image will have an empty alt attribute.
+    @param {string} [params.imageSmall] - Optional flag to indicate if the image should be displayed in a smaller size on mobile devices. If set to true, the image will have a smaller size on mobile.
+    @param {string} [params.heading] - Optional heading text for the feature grid item. If not provided, the heading will not be displayed.
+    @param {string} [params.headingLevel] - Optional heading level for the feature grid item. Accepts 'h2', 'h3' or 'h4'. If not provided, the default heading level will be 'h2'.
+    @param {string} [params.content] - Optional content text for the feature grid item. If not provided, the content    will not be displayed.          
+    @param {string} [params.href] - Optional URL for the feature grid item. If provided, the image and heading will be wrapped in a link to the specified URL.  
+    
+    @example - Feature grid item with image, heading, and content
+    {{ sgBlockFeatureGridItem({ 
+        image: "example-image.jpg", 
+        imageAlt: "Example image", 
+        heading: "Feature Grid Item Heading", 
+        content: "<p>This is the content for the feature grid item.</p>", 
+        href: "#"
+    }) }}
+
+#}
+{%- macro sgBlockFeatureGridItem(params) -%}
+    
+    <div class="ds_pb--feature-grid__item">
+
+        {%- if params.image %}
+        <div class="ds_pb--feature-grid__item-media {%- if params.imageSmall %}  ds_pb--feature-grid__item-media--small-mobile{%- endif %}">
+
+            {%- if params.href %}
+            <a href="{{ params.href }}" tabindex="-1">
+            {%- endif %}
+
+            <div class="ds_aspect-box">
+                <img loading="lazy" class="ds_aspect-box__inner" src="{{ params.image }}" alt="{{ params.imageAlt }}"/>
+            </div>
+
+            {%- if params.href %}
+            </a>
+            {%- endif -%}
+
+        </div>
+        {%- endif %}
+
+        {%- if params.heading %}
+        <{{ params.headingLevel | default('h2')}} class="ds_pb--feature-grid__item-title">
+            {%- if params.href %}
+            <a href="{{ params.href }}">{{ params.heading }}</a>
+            {% else %}
+            {{ params.heading }}
+            {%- endif%}
+            </{{ params.headingLevel | default('h2')}}>
+        {%- endif %}
+
+        {%- if params.content %}
+        <div class="ds_pb--feature-grid__item-summary">
+            {{ params.content | safe }}
+        </div>
+        {%- endif -%}
+    
+    </div>
+
+{%- endmacro -%}
+
+
+{#
+    sgBlockFeatureGrid
+
+    Renders a block of two, three or four feature grid items.
+    
+    @param {Object} params - The options object for the block.
+    @param {string} [params.background] - Optional background color for the block. Accepts 'secondary', 'tertiary', or 'theme'.
+    @param {number} [params.contentLayout=2] - The number of feature grid items to display (2, 3, or 4).
+    @param {boolean} [params.removeBottomPadding=false] - If true, removes the bottom padding from the block.
+
+    @example - Standard feature grid block with two items and default background
+    {% call sgBlockFeatureGrid() %}
+        {{ sgBlockFeatureGridItem({ 
+            image: "example-image-1.jpg", 
+            imageAlt: "Example image 1", 
+            heading: "Feature Grid Item 1", 
+            content: "<p>This is the content for feature grid item 1.</p>", 
+            href: "#"
+        }) }}
+        {{ sgBlockFeatureGridItem({ 
+            image: "example-image-2.jpg", 
+            imageAlt: "Example image 2", 
+            heading: "Feature Grid Item 2", 
+            content: "<p>This is the content for feature grid item 2.</p>", 
+            href: "#"
+        }) }}
+    {% endcall %}
+
+    @example - Feature grid block with three items, secondary background, and no bottom padding
+    {% call sgBlockFeatureGrid({ background: "secondary", contentLayout: 3, removeBottomPadding: true }) %}
+        {{ sgBlockFeatureGridItem({ 
+            image: "example-image-1.jpg", 
+            imageAlt: "Example image 1", 
+            heading: "Feature Grid Item 1", 
+            content: "<p>This is the content for feature grid item 1.</p>", 
+            href: "#"
+        }) }}
+        {{ sgBlockFeatureGridItem({ 
+            image: "example-image-2.jpg", 
+            imageAlt: "Example image 2", 
+            heading: "Feature Grid Item 2", 
+            content: "<p>This is the content for feature grid item 2.</p>", 
+            href: "#"
+        }) }}
+        {{ sgBlockFeatureGridItem({ 
+            image: "example-image-3.jpg", 
+            imageAlt: "Example image 3", 
+            heading: "Feature Grid Item 3", 
+            content: "<p>This is the content for feature grid item 3.</p>", 
+            href: "#"
+        }) }}
+    {% endcall %}
+#}
+
+{%- macro sgBlockFeatureGrid(params) -%}
+<div class="ds_pb  ds_pb--feature-grid
+{%- if params.contentLayout == 3 %} ds_pb--feature-grid-3-items {%- endif %}
+{%- if params.contentLayout == 4 %} ds_pb--feature-grid-4-items {%- endif %}
+{%- if params.background == "secondary" %} ds_pb--background-secondary
+{%- elseif params.background == "tertiary" %} ds_pb--background-tertiary
+{%- elseif params.background == "theme" %} ds_pb__theme--background-secondary
+{%- endif %}
+{%- if params.removeBottomPadding %} ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner">
+            {{ caller() }}
+        </div>
+    </div>
+</div>
+{%- endmacro -%}

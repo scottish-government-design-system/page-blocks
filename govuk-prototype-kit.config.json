@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "description": "Scottish Government Design System page blocks for the GOV.UK Prototype Kit"
+  },
+  "stylesheets": [
+    "/dist/css/page-blocks.css"
+  ],
+  "nunjucksPaths": [
+    "/src/"
+  ],
+  "nunjucksMacros": [
+    {
+      "macroName": "sgBlockBrowse",
+      "importFrom": "blocks/browse/macro.njk"
+    },
+    {
+      "macroName": "sgBlockTextWithCard",
+      "importFrom": "blocks/card-text/macro.njk"
+    },
+    {
+      "macroName": "sgBlockThreeCards",
+      "importFrom": "blocks/cards/macro.njk"
+    },
+    {
+      "macroName": "sgBlockDivider",
+      "importFrom": "blocks/divider/macro.njk"
+    },
+    {
+      "macroName": "sgBlockDoubleText",
+      "importFrom": "blocks/double-text/macro.njk"
+    },
+    {
+      "macroName": "sgBlockFeatureGrid",
+      "importFrom": "blocks/feature-grid/macro.njk"
+    },
+    {
+      "macroName": "sgBlockFeatureGridItem",
+      "importFrom": "blocks/feature-grid/macro.njk"
+    },
+    {
+      "macroName": "sgBlockFeatureHeader",
+      "importFrom": "blocks/feature-header/macro.njk"
+    },
+    {
+      "macroName": "sgBlockHeader",
+      "importFrom": "blocks/header/macro.njk"
+    },
+    {
+      "macroName": "sgBlockTextWithImage",
+      "importFrom": "blocks/image-text/macro.njk"
+    },
+    {
+      "macroName": "sgBlockLinkList",
+      "importFrom": "blocks/listed-links/macro.njk"
+    },
+    {
+      "macroName": "sgBlockText",
+      "importFrom": "blocks/text/macro.njk"
+    },
+    {
+      "macroName": "sgBlockTextWithVideo",
+      "importFrom": "blocks/video-text/macro.njk"
+    }
+  ],
+  "pluginDependencies": [
+	  {
+	    "packageName": "@scottish-government/design-system",
+      "minVersion": "4.2.0"
+    },
+    {
+      "packageName": "@scottish-government-design-system/prototype-templates",
+      "minVersion": "0.6.0"
+    }
+	]
+}

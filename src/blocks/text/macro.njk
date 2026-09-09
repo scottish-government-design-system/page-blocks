@@ -1,0 +1,41 @@
+{#
+    sgBlockText
+
+    Renders a basic block for a single column of text content passed via the caller() function.
+
+    @param {Object} params - The options object for the block.
+    @param {string} [params.background] - Optional background color for the block. Accepts 'secondary', 'tertiary', or 'theme'.
+    @param {string} [params.title] - The title text for the header block.
+    @param {string} [params.headingLevel='h2'] - The heading level for the title. Accepts 'h1', 'h2', 'h3' or 'h4'. If not provided, the default heading level will be 'h2'.
+    @param {string} [params.position] - Optional position for the text. Accepts 'center', or 'right'. If not provided, the default position will be left aligned.
+    @param {boolean} [params.removeBottomPadding=false] - If true, removes the bottom padding from the block.
+
+    @example - text content with default background
+    {% call sgBlockFText({}) %}
+        <p>This is the content for the text block.</p>
+    {% endcall %}
+
+    @example - text content with secondary background and no bottom padding
+    {% call sgBlockFText({
+        background: "secondary",
+        removeBottomPadding: true
+    }) %}
+        <p>This is the content for the text block.</p>
+    {% endcall %}
+#}
+
+{%- macro sgBlockText(params) -%}
+<div class="ds_pb  ds_pb--text
+{%- if params.background == "secondary" %} ds_pb--background-secondary
+{%- elseif params.background == "tertiary" %} ds_pb--background-tertiary
+{%- elseif params.background == "theme" %} ds_pb__theme--background-secondary
+{%- endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner {%- if params.removeBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+            <div class="ds_pb__text {%- if params.position %} ds_pb__text--{{ params.position }}{% endif %}">
+                {{ caller() }}
+            </div>
+        </div>
+    </div>
+</div>
+{%- endmacro -%}

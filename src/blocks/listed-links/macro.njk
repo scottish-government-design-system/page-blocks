@@ -1,0 +1,95 @@
+{#
+    sgBlockLinkList
+    
+    Renders a block to contain a list of link commponents such as news articles or publications passed via the caller() function.
+    
+    @param {Object} params - The options object for the block.
+    @param {string} [params.heading] - Optional h2 heading for the block.
+    @param {Object} [params.viewAll] - Optional object for a 'view all' link.
+        @param {string} [params.viewAll.label] - The text for the link.
+        @param {string} [params.viewAll.url] - The url for the link.
+    @param {boolean} [params.removeBottomPadding=false] - If true, removes the bottom padding from the block.
+
+    @example - Standard three links block and no 'view all' link
+    {% call sgBlockLinkList({}) %}
+        <ul class="ds_link-list  ds_link-list--no-border">
+            <li class="ds_link-item">
+                <div class="ds_link-item__metadata">
+                    <dl class="ds_metadata ds_metadata--inline ">
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key">Content type</dt>
+                            <dd class="ds_metadata__value">Consultation paper</dd>
+                        </div>
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key">Publish date</dt>
+                            <dd class="ds_metadata__value">13 August 2025</dd>
+                        </div>
+                    </dl>
+                </div>
+                <h3 class="ds_link-item__title">
+                    <a href="" class="ds_link-item__link">Environment and countryside</a>
+                </h3>
+                <p class="ds_link-item__summary">Access to and protection of the countryside and managing wildlife on your land</p>
+            </li>
+            <li class="ds_link-item">
+                <div class="ds_link-item__metadata">
+                    <dl class="ds_metadata ds_metadata--inline ">
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key">Content type</dt>
+                            <dd class="ds_metadata__value">Consultation paper</dd>
+                        </div>
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key">Publish date</dt>
+                            <dd class="ds_metadata__value">13 August 2025</dd>
+                        </div>
+                    </dl>
+                </div> 
+                <h3 class="ds_link-item__title">
+                    <a href="" class="ds_link-item__link">Environmental Impact Assessment (EIA)</a>
+                </h3>
+                <p class="ds_link-item__summary">Find out about Environmental Impact Assessments (EIAs) in your area</p>
+            </li>
+            <li class="ds_link-item">
+                <div class="ds_link-item__metadata">
+                    <dl class="ds_metadata ds_metadata--inline ">
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key">Content type</dt>
+                            <dd class="ds_metadata__value">Consultation paper</dd>
+                        </div>
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key">Publish date</dt>
+                            <dd class="ds_metadata__value">13 August 2025</dd>
+                        </div>
+                    </dl>
+                </div>
+                <h3 class="ds_link-item__title">
+                    <a href="" class="ds_link-item__link">Farming and rural issues</a>
+                </h3>
+                <p class="ds_link-item__summary">Guidance for farming, animal health, agriculture and food businesses in Scotland</p>
+             </li>
+         </ul>
+    {% endcall %}
+#}
+
+{%- macro sgBlockLinkList(params) -%}
+<div class="ds_pb  ds_pb--link-list
+{%- if params.removeBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner">
+            {%- if params.heading %}
+            <h2>{{ params.heading }}</h2>
+            {%- endif %}
+            {{ caller() }}     
+        </div>
+        {%- if params.viewAll %}
+
+        {%- if params.viewAll.url %}
+        <div>
+            <a href="{{ params.viewAll.url}}">{{ params.viewAll.label | default("View all")}}</a>
+        </div>
+        {%- endif %}
+
+        {%- endif %}
+    </div>
+</div>
+{%- endmacro -%}
