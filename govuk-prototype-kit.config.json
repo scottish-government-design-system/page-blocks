@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "description": "Scottish Government Design System page blocks for the GOV.UK Prototype Kit"
+  },
+  "stylesheets": [
+    "/dist/css/page-blocks.css"
+  ],
+  "pluginDependencies": [
+	  {
+	    "packageName": "@scottish-government/design-system",
+      "minVersion": "4.2.0"
+    }
+	]
+}
