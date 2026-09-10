@@ -5,6 +5,15 @@
   "stylesheets": [
     "/dist/css/page-blocks.css"
   ],
+  "nunjucksPaths": [
+    "/"
+  ],
+  "nunjucksMacros": [
+    {
+      "macroName": "sgdsBlockDivider",
+      "importFrom": "src/blocks/divider/macro.njk"
+    }
+  ],
   "pluginDependencies": [
 	  {
 	    "packageName": "@scottish-government/design-system",

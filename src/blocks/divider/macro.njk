@@ -1,0 +1,11 @@
+{% macro sgdsBlockDivider(params) %}
+<div class="ds_pb  ds_pb--divider">
+    {%- if params.fullWidth %}
+     <hr />
+    {%- else %}
+    <div class="ds_wrapper">    
+        <hr />
+    </div>    
+    {%- endif %}
+</div>
+{% endmacro %}
