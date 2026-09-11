@@ -6,18 +6,26 @@
     "/dist/css/page-blocks.css"
   ],
   "nunjucksPaths": [
-    "/"
+    "/src/"
+  ],
+  {
+  "importNunjucksMacrosInto": [
+    "/nunjucks/sg-prototype-templates/layouts/_base-layout.njk"
   ],
   "nunjucksMacros": [
     {
-      "macroName": "sgdsBlockDivider",
-      "importFrom": "src/blocks/divider/macro.njk"
+      "macroName": "sgBlockDivider",
+      "importFrom": "blocks/divider/macro.njk"
     }
   ],
   "pluginDependencies": [
 	  {
 	    "packageName": "@scottish-government/design-system",
       "minVersion": "4.2.0"
+    },
+    {
+      "packageName": "@scottish-government-design-system/prototype-templates",
+      "minVersion": "0.6.0"
     }
 	]
 }
