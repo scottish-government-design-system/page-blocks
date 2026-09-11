@@ -8,7 +8,6 @@
   "nunjucksPaths": [
     "/src/"
   ],
-  {
   "importNunjucksMacrosInto": [
     "/nunjucks/sg-prototype-templates/layouts/_base-layout.njk"
   ],
