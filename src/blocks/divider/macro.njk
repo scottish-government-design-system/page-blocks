@@ -1,0 +1,26 @@
+{#
+    sgBlockDivider
+    
+    Renders a horizontal rule block.
+    
+    @param {Object} params - The options object for the block.
+    @param {boolean} [params.fullWidth=false] - If true, the horizontal rule spans the full width of the viewport. If false, it is wrapped in a standard content container ('ds_wrapper').
+    
+    @example - Standard restricted-width divider 
+    {{ sgBlockDivider() }}
+
+    @example - Full-width divider 
+    {{ sgBlockDivider({ fullWidth: true }) }}
+#}
+
+{%- macro sgBlockDivider(params) -%}
+<div class="ds_pb  ds_pb--divider">
+    {%- if params.fullWidth %}
+     <hr />
+    {%- else %}
+    <div class="ds_wrapper">    
+        <hr />
+    </div>    
+    {%- endif %}
+</div>
+{% endmacro %}
