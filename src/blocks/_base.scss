@@ -26,9 +26,16 @@
 
 // subcomponents
 
+// Remove bottom margin from last child of text and inner blocks
 .ds_pb__inner > :last-of-type,
 .ds_pb__text > :last-child {
     margin-bottom: 0;
+}
+
+// Remove top margin from first child of text and inner blocks
+.ds_pb__inner > :first-of-type,
+.ds_pb__text > :first-child {
+    margin-top: 0;
 }
 
 .ds_pb__inner {
