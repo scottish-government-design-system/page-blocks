@@ -1,0 +1,144 @@
+{#
+    sgBlockTextWithImage
+
+    Renders a text with accompanying image block.
+
+    @param {Object} params - The options object for the block.
+        @param {string} [params.background] - Optional background color for the block. Accepts 'secondary', 'tertiary',  or 'theme'.
+        @param {string} [params.content] - The text for the feature header block h1 heading.
+        @param (string) [params.contentPosition] - Optional positioning of content to left or right of the image. The default is to the left.
+        @param {Object} [params.image] - Optional image object for the feature header block. If not provided, no image will be displayed.
+            @param {string} [params.image.src] - The source URL for the image.
+            @param {string} [params.image.alt] - The alt text for the image.    
+            @param {string} [params.image.width] - The width for the image.
+            @param {string} [params.image.height] - The height for the image.
+            @param {Array} [params.image.srcset] - Optional array of objects for the image srcset attribute. 
+                @param {string} [params.image.srcset[].src] - The source URL for the image in the srcset.
+                @param {number} [params.image.srcset[].width] - The width descriptor for the image in the srcset.
+            @param {Array} [params.image.sizes] - Optional array of objects for the image sizes attribute.
+                @param {string} [params.image.sizes[].media] - The media condition for the image in the sizes attribute.
+                @param {string} [params.image.sizes[].size] - The size value for the image in the sizes attribute.
+        @param {boolean} [params.isVerticalCentred=false] - If true, the content is vertically centred with the image.
+        @param {boolean} [params.removeBottomPadding=false] - If true, removes the bottom padding from the block.
+
+    @example - Standard text with image block with default background, image and short text content.
+    {{ sgBlockTextWithImage({ 
+        content: "<h2>Example heading</h2><p>This is some additional content.</p>",
+        image: {
+            src: "https://via.placeholder.com/600x400",
+            alt: "Placeholder Image",
+            width: "600",
+            height: "400"
+        }
+    }) }}
+
+    @example - Text content placed to right of image and vertically centred, the block has a secondary background and the image provides multiple sizes
+    {{ sgBlockTextWithImage({ 
+        background: "secondary",
+        content: "<h2>Example heading</h2><p>This is some additional content.</p>",
+        contentPosition: "right",
+        image: {
+            "src": "https://placehold.co/767x431",
+            "alt": "",
+            "width": 767,
+            "height": 431,
+            "srcset": [
+                {
+                "src": "https://placehold.co/352x198",
+                "width": 352
+                },
+                {
+                "src": "https://placehold.co/448x252",
+                "width": 448
+                },
+                {
+                "src": "https://placehold.co/544x306",
+                "width": 544
+                },
+                {
+                "src": "https://placehold.co/704x396",
+                "width": 704
+                },
+                {
+                "src": "https://placehold.co/767x431",
+                "width": 767
+                },
+                {
+                "src": "https://placehold.co/896x504",
+                "width": 896
+                },
+                {
+                "src": "https://placehold.co/1088x612",
+                "width": 1088
+                },
+                {
+                "src": "https://placehold.co/1534x863",
+                "width": 1534
+                }
+            ],
+            "sizes": [
+                {
+                "media": "(min-width:1200px)",
+                "size": "544px"
+                },
+                {
+                "media": "(min-width:992px)",
+                "size": "448px"
+                },
+                {
+                "media": "(min-width:768px)",
+                "size": "352px"
+                }
+            ]
+        },
+        isVerticalCentred: true
+    }) }}
+
+#}
+
+{%- macro sgBlockTextWithImage(params) -%}
+<div class="ds_pb  ds_pb--image-text
+{%- if params.background == "secondary" %} ds_pb--background-secondary
+{%- elseif params.background == "tertiary" %} ds_pb--background-tertiary
+{%- elseif params.background == "theme" %} ds_pb__theme--background-secondary
+{%- endif %}
+{%- if params.isVerticalCentred %}  ds_pb--image-text--center{% endif %}
+{%- if params.removeBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner">
+            {%- if params.contentPosition == "left" %}
+            <div class="ds_pb__text">
+                {{ params.content | safe }}
+            </div>
+            {% endif %}
+            {%- if params.image %}
+            <div class="ds_pb__poster">
+                <img alt="{{ params.image.alt }}" src="{{ params.image.src }}"
+                    width="{{ params.image.width }}"
+                    height="{{ params.image.height }}"
+                    loading="lazy"
+                    {%- if params.image.srcset %}
+                    srcset="
+                    {%- for item in params.image.srcset %}
+                    {{ item.src }} {{ item.width }}w{% if not loop.last %}, {% endif %}
+                    {%- endfor %}"
+                    {%- endif %}
+                    {%- if params.image.sizes %}
+                    sizes="
+                    {%- for item in params.image.sizes %}
+                    {{ item.media }} {{ item.size }},
+                    {%- endfor %}
+                    100vw"
+                    {%- endif %}
+                    />
+            </div>
+            {%- endif %}
+            {%- if params.contentPosition == "right" %}
+            <div class="ds_pb__text">
+                {{ params.content | safe }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{%- endmacro -%}

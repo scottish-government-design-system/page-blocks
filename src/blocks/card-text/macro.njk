@@ -1,0 +1,44 @@
+{#
+    sgBlockTextWithCard
+    
+    Renders a block with text content and a card component.
+    
+    @param {Object} params - The options object for the block.
+    @param {string} [params.background] - Optional background color for the block. Accepts 'secondary', 'tertiary', or 'theme'.
+    @param {boolean} [params.removeBottomPadding=false] - If true, removes the bottom padding from the block.
+    @param {string} params.content - The text content for the block.
+    @param {string} params.card - The HTML string representing the card component to be rendered within the block.
+
+    @example - Block with secondary background and a card component
+    {{ sgBlockTextWithCard({ 
+        background: "secondary", 
+        content: "<p>Text content here.</p>",
+        card: "<div class="ds_card">
+            <div class="ds_card__content">
+                <div class="ds_card__content-header">
+                    <h2 class="ds_card__title">Card title</h2>
+                </div>
+            </div>
+        </div>"
+    }) }}
+#}
+
+{%- macro sgBlockTextWithCard(params) -%}
+<div class="ds_pb  ds_pb--card-text
+{%- if params.background == "secondary" %} ds_pb--background-secondary
+{%- elseif params.background == "tertiary" %} ds_pb--background-tertiary
+{%- elseif params.background == "theme" %} ds_pb__theme--background-secondary
+{%- endif %}
+{%- if params.removeBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner">
+            <div class="ds_pb__text">
+                {{ params.content | safe }}
+            </div>
+            <div class="ds_pb__card">
+                {{ params.card | safe }}
+            </div>
+        </div>
+    </div>
+</div>
+{%- endmacro -%}

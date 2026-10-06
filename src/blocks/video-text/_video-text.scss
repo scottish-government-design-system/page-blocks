@@ -53,6 +53,7 @@
             &:has(.ds_pb__poster__overlay):focus,
             &:has(.ds_pb__poster__overlay):hover {
                 box-shadow: none;
+                filter: none;
                 outline: 0;
             }
 

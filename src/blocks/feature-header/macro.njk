@@ -1,0 +1,183 @@
+{#
+    sgBlockFeatureHeader
+
+    Renders a feature header block with optional content and button passed via the caller() function.
+
+    @param {Object} params - The options object for the block.
+        @param {string} [params.background] - Optional background color for the block. Accepts 'secondary', 'tertiary', 'theme' or 'theme-reversed'.
+        @param {string} [params.heading] - The text for the feature header block h1 heading.
+        @param {Object} [params.image] - Optional image object for the feature header block. If not provided, no image will be displayed.
+            @param {string} [params.image.src] - The source URL for the image.
+            @param {string} [params.image.alt] - The alt text for the image.    
+            @param {string} [params.image.width] - The width for the image.
+            @param {string} [params.image.height] - The height for the image.
+            @param {Array} [params.image.srcset] - Optional array of objects for the image srcset attribute. 
+                @param {string} [params.image.srcset[].src] - The source URL for the image in the srcset.
+                @param {number} [params.image.srcset[].width] - The width descriptor for the image in the srcset.
+            @param {Array} [params.image.sizes] - Optional array of objects for the image sizes attribute.
+                @param {string} [params.image.sizes[].media] - The media condition for the image in the sizes attribute.
+                @param {string} [params.image.sizes[].size] - The size value for the image in the sizes attribute.
+        @param {string} [params.videoUrl] - The URL for the video to be displayed. If provided, a video play button overlay will be displayed on the image.
+        @param {boolean} [params.isImageCover=false] - If true, the image will cover the entire area of the feature header block. If false, the image will be displayed at its original size.
+        @param {boolean} [params.hasNoImagePadding=false] - If true, removes the padding around the image. If false, the image will have default padding.
+        @param {string} [params.hasImageMobileAlignment] - Optional alignment for the image on mobile devices. Accepts 'left', 'right', or 'hidden'. If not provided, the image will be displayed   at its default alignment.
+        @param {boolean} [params.isWideText=false] - If true, the text will be displayed in a wider format. If false, the text will be displayed in its default width.
+        @param {boolean} [params.isFullWidth=false] - If true, the feature header block will span the full width of the viewport. If false, the block will be contained within the default wrapper width.
+        @param {boolean} [params.isTopAlign=false] - If true, the text will be aligned to the top of the feature header block. If false, the text will be vertically centered within the block. 
+
+    @example - Standard feature header block with default background, image and short text content with a call to action button
+    {% call sgBlockFeatureHeader({ 
+        heading: "Feature Header Title",
+        image: {
+            src: "https://via.placeholder.com/600x400",
+            alt: "Placeholder Image",
+            width: "600",
+            height: "400"
+        }
+    }) %}
+        <p>This is the content for the feature header block.</p>
+        <a class="ds_button  ds_button--has-icon" href="#foo">
+        Call to action
+        <svg class="ds_icon" aria-hidden="true" role="img"><use href="images/icons.stack.svg#chevron_right"></use></svg>
+        </a>
+    {% endcall %}
+
+    @example - Full width theme coloured feature header block with top aligned content and decorative image set to cover space
+    {% call sgBlockFeatureHeader({ 
+        background: "theme-reversed"
+        heading: "Feature Header Title",
+        image: {
+            "src": "https://placehold.co/767x431",
+            "alt": "",
+            "width": 767,
+            "height": 431,
+            "srcset": [
+                {
+                "src": "https://placehold.co/352x198",
+                "width": 352
+                },
+                {
+                "src": "https://placehold.co/448x252",
+                "width": 448
+                },
+                {
+                "src": "https://placehold.co/544x306",
+                "width": 544
+                },
+                {
+                "src": "https://placehold.co/704x396",
+                "width": 704
+                },
+                {
+                "src": "https://placehold.co/767x431",
+                "width": 767
+                },
+                {
+                "src": "https://placehold.co/896x504",
+                "width": 896
+                },
+                {
+                "src": "https://placehold.co/1088x612",
+                "width": 1088
+                },
+                {
+                "src": "https://placehold.co/1534x863",
+                "width": 1534
+                }
+            ],
+            "sizes": [
+                {
+                "media": "(min-width:1200px)",
+                "size": "544px"
+                },
+                {
+                "media": "(min-width:992px)",
+                "size": "448px"
+                },
+                {
+                "media": "(min-width:768px)",
+                "size": "352px"
+                }
+            ]
+        },
+        isFullWidth: true,
+        isImageCover: true,
+        isTopAlign: true
+    }) %}
+        <p>This is the content for the feature header block.</p>
+        <a class="ds_button  ds_button--has-icon" href="#foo">
+        Call to action
+        <svg class="ds_icon" aria-hidden="true" role="img"><use href="images/icons.stack.svg#chevron_right"></use></svg>
+        </a>
+    {% endcall %}
+
+#}
+
+{%- macro sgBlockFeatureHeader(params) -%}
+{%- if not params.isFullWidth %}
+<div class="ds_wrapper">
+{%- endif %}
+<header class="ds_feature-header  ds_pb  ds_pb--ds_feature-header
+{%- if params.background == 'theme-reversed' %}  ds_feature-header--background{% endif %}
+{%- if params.background == 'secondary' %}  ds_feature-header--background-secondary{% endif %}
+{%- if params.background == 'tertiary' %}  ds_feature-header--background-tertiary{% endif %}
+{%- if params.background == 'theme' %}  ds_pb__theme--background-secondary  ds_feature-header--background-secondary{% endif %}
+{%- if params.isWideText %}  ds_feature-header--wide{% endif %}
+{%- if params.isFullWidth %}  ds_feature-header--fullwidth{% endif %}
+{%- if params.isTopAlign %}  ds_feature-header--top{% endif %}">
+    {%- if params.isFullWidth %}
+    <div class="ds_wrapper">
+    {%- endif -%}
+
+    <div class="ds_feature-header__primary">
+        <h1 class="ds_feature-header__title">
+            {{ params.heading }}
+        </h1>
+        {{ caller() }}
+    </div>
+    {%- if params.image %}
+    <div class="ds_feature-header__secondary {%- if params.isImageCover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.hasNoImagePadding %}  ds_feature-header__secondary--no-padding{% endif %} {%- if params.hasImageMobileAlignment %}  ds_feature-header__secondary--{{ params.hasImageMobileAlignment }}-mobile{% endif %}">
+        {%- if params.videoUrl %}
+        <a target="_blank" class="ds_feature-header__secondary-link" href="{{ params.videoUrl }}}}">
+        {%- endif %}
+        {%- if params.hasImageMobileAlignment == 'hidden' %}
+        <picture>
+        <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
+        {% endif -%}
+        <img class="ds_feature-header__image" alt="{{ params.image.alt }}" src="{{ params.image.src }}"
+            width="{{ params.image.width }}"
+            height="{{ params.image.height }}"
+            {%- if params.image.srcset %}
+            srcset="
+            {%- for item in params.image.srcset %}
+            {{ item.src }} {{ item.width }}w{% if not loop.last %}, {% endif %}
+            {%- endfor %}"
+            {%- endif %}
+            {%- if params.image.sizes %}
+            sizes="
+            {%- for item in params.image.sizes %}
+            {{ item.media }} {{ item.size }},
+            {%- endfor %}
+            100vw"
+            {%- endif %}
+            />
+        {%- if params.hasImageMobileAlignment == 'hidden' %}
+        </picture>
+        {%- endif %}
+        {%- if params.videoUrl %}
+            <svg class="ds_feature-header__secondary-overlay" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 160 90">
+                <circle class="ds_feature-header__secondary-overlay-background" cx="82" cy="45.5" r="16" fill="#0065db"/>
+                <path class="ds_feature-header__secondary-overlay-foreground" fill="#fff" d="M76 45.3v-9.2l8 4.6 8 4.6-8 4.7-8 4.6z"/>
+            </svg>
+        </a>
+        {%- endif %}
+    </div>
+    {%- endif %}
+    {%- if params.isFullWidth %}
+    </div>
+    {%- endif %}
+</header>
+{%- if not params.isFullWidth %}
+</div>
+{%- endif %}
+{%- endmacro -%}
