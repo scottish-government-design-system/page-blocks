@@ -15,6 +15,8 @@ Changes are grouped under the labels: `Added`, `Changed`, `Deprecated`,
 - Scottish Government Design System dependency bumped to v4.3.0
 - First child item in a page block or within a text block has its top margin removed
 - Prepack changed to Prepare in npm scripts
+### Security
+- Update dependencies
 
 ## v2.0.0
 ### Changed
