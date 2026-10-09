@@ -6,6 +6,16 @@ Changes are grouped under the labels: `Added`, `Changed`, `Deprecated`,
 `Removed`, `Fixed`, and `Security`.
 
 ---
+## v2.1.0
+### Added
+- Nunjucks macros for each page block, with supporting documentation and examples
+- GovUK Prototype Kit plugin config, so page blocks can be used in prototypes
+- Video and text block now includes a play button overlay for the image link
+### Changed
+- Scottish Government Design System dependency bumped to v4.3.0
+- First child item in a page block or within a text block has its top margin removed
+- Prepack changed to Prepare in npm scripts
+
 ## v2.0.0
 ### Changed
 - Sass changed to modular Sass
